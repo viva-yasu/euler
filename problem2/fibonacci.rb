@@ -1,20 +1,19 @@
 module Fibonacci
-  def self.fibonacci
+  def self.start
     nums = [1, 2]
     while nums[-2] + nums[-1] < 4000000
       nums.push(nums[-2] + nums[-1])
     end
 
-    sum_even(nums)
+     puts sum_even(nums)
   end
 
-  def self.sum_even(target_arr)
+  def self.sum_even target_arr
     sum = 0
-
-    target_arr.select! { |n| n.even? }
+    target_arr.select!(&:even?)
     target_arr.each { |n| sum += n }
-    puts sum
+    sum
   end
 end
 
-Fibonacci.fibonacci
+Fibonacci.start
