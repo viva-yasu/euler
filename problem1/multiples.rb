@@ -3,9 +3,7 @@ module Multiples
     num = 1
     sum = 0
     while num < i
-      if num.modulo(3) == 0 || num.modulo(5) == 0
-        sum += num
-      end
+      sum += num if num.modulo(3).zero? || num.modulo(5).zero?
       num += 1
     end
     puts sum
