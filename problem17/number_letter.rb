@@ -29,7 +29,7 @@ module NumberLetter
       '70' => 'seventy',
       '80' => 'eighty',
       '90' => 'ninety'
-  }
+  }.freeze
 
   def self.start
     sum_letters = 0
@@ -43,13 +43,13 @@ module NumberLetter
 
   def self.get_number_letter(num)
     if num.size == 1
-      return NUM_ENG[num]
+      NUM_ENG[num]
     elsif num.size == 2
-      return get_two_digits(num)
+      get_two_digits(num)
     elsif num.size == 3
-      return get_three_digits(num)
+      get_three_digits(num)
     elsif num.size == 4
-      return get_four_digits(num)
+      get_four_digits(num)
     end
   end
 
@@ -60,29 +60,29 @@ module NumberLetter
   def self.get_two_digits(num)
     num = num.to_i.to_s
     if num.to_i < 20
-      return NUM_ENG[num.to_s]
+      NUM_ENG[num.to_s]
     elsif num.to_i % 10 == 0
-      return NUM_ENG[num]
+      NUM_ENG[num]
     else
-      return NUM_ENG[num[0] + '0'] + ' ' + NUM_ENG[num[1]]
+      NUM_ENG[num[0] + '0'] + ' ' + NUM_ENG[num[1]]
     end
   end
 
   def self.get_three_digits(num)
     if num.to_i % 100 == 0
-      return NUM_ENG[num[0]] + ' hundred'
+      NUM_ENG[num[0]] + ' hundred'
     else
-      return NUM_ENG[num[0]] + ' hundred and ' + get_two_digits(num[1,2])
+      NUM_ENG[num[0]] + ' hundred and ' + get_two_digits(num[1,2])
     end
   end
 
   def self.get_four_digits(num)
     if num.to_i % 1000 == 0
-      return NUM_ENG[num[0]] + ' thousand'
+      NUM_ENG[num[0]] + ' thousand'
     elsif num.to_i % 100 == 0
-      return get_two_digits(num[0, 2]) + ' hundred'
+      get_two_digits(num[0, 2]) + ' hundred'
     else
-      return get_two_digits(num[0, 2]) + ' hundred and ' + get_two_digits(num[2, 2])
+      get_two_digits(num[0, 2]) + ' hundred and ' + get_two_digits(num[2, 2])
     end
   end
 
