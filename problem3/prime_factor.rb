@@ -8,12 +8,12 @@ module PrimeFactory
 
       while n.modulo(prime).zero?
         n = n / prime
-        result.push(prime)
+        result << prime
       end
 
       prime = next_prime(prime)
     end
-    result
+    puts result.last
   end
 
   def self.next_prime(prime)
@@ -35,5 +35,4 @@ module PrimeFactory
   end
 end
 
-primes = PrimeFactory.prime_factor(600851475143)
-p primes.last
+PrimeFactory.prime_factor(600851475143)
