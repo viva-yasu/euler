@@ -4,9 +4,7 @@ module Palindrome
     999.downto(100) do |i|
       999.downto(100) do |j|
         product = i * j
-        if product.to_s == product.to_s.reverse
-          products << product
-        end
+        products << product if product.to_s == product.to_s.reverse
       end
     end
     p products.max
