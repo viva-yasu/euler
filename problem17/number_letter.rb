@@ -31,29 +31,29 @@ module NumberLetter
       '90' => 'ninety'
   }.freeze
 
-  def self.start from, to
+  def self.start(from, to)
     sum_letters = 0
-    from.upto to do |n|
-      str = get_number_letter n.to_s
-      c = count_letter str
+    from.upto(to) do |n|
+      str = get_number_letter(n.to_s)
+      c = count_letter(str)
       sum_letters += c.to_i
     end
     puts sum_letters
   end
 
-  def self.get_number_letter num
+  def self.get_number_letter(num)
     if num.size == 1
       NUM_ENG[num]
     elsif num.size == 2
-      get_two_digits num
+      get_two_digits(num)
     elsif num.size == 3
-      get_three_digits num
+      get_three_digits(num)
     elsif num.size == 4
-      get_four_digits num
+      get_four_digits(num)
     end
   end
 
-  def self.get_two_digits num
+  def self.get_two_digits(num)
     num = num.to_i.to_s
     if num.to_i < 20
       NUM_ENG[num.to_s]
@@ -64,25 +64,25 @@ module NumberLetter
     end
   end
 
-  def self.get_three_digits num
+  def self.get_three_digits(num)
     if num.to_i % 100 == 0
       NUM_ENG[num[0]] + ' hundred'
     else
-      NUM_ENG[num[0]] + ' hundred and ' + get_two_digits(num[1,2])
+      NUM_ENG[num[0]] + ' hundred and ' + get_two_digits(num[1, 2])
     end
   end
 
-  def self.get_four_digits num
+  def self.get_four_digits(num)
     if num.to_i % 1000 == 0
       NUM_ENG[num[0]] + ' thousand'
     elsif num.to_i % 100 == 0
-      get_two_digits num[0, 2] + ' hundred'
+      get_two_digits(num[0, 2]) + ' hundred'
     else
-      get_two_digits num[0, 2] + ' hundred and ' + get_two_digits(num[2, 2])
+      get_two_digits(num[0, 2]) + ' hundred and ' + get_two_digits(num[2, 2])
     end
   end
 
-  def self.count_letter str
+  def self.count_letter(str)
     str.gsub(' ', '').gsub('-', '').size
   end
 end
