@@ -1,19 +1,37 @@
+require 'prime'
+
+class Integer
+  def divisor_list
+    divisors = [1]
+    primes = []
+    Prime.prime_division(self).each do |prime|
+      prime[1].times { primes << prime[0] }
+    end
+
+    1.upto(primes.size) do |i|
+      primes.combination(i) do |prime|
+        divisors << prime.inject { |a, b| a *= b }
+      end
+    end
+
+    divisors.uniq!
+    divisors.sort!
+
+    return divisors
+
+  rescue ZeroDivisionError
+    return
+  end
+end
+
 module Triangular
   def self.start
     triangular_number = 0
-    start_int = 10000
+    start_int = 1
     loop do
-      divisors = []
-      sum = 0
-      1.upto start_int do |n|
-        sum += n
-      end
+      sum = sum_arithmetic_progression(start_int)
 
-      1.upto sum do |n|
-        if sum.modulo(n).zero?
-          divisors << n
-        end
-      end
+      divisors = sum.divisor_list
 
       if divisors.size >= 500
         triangular_number = sum
@@ -22,6 +40,11 @@ module Triangular
       start_int += 1
     end
     puts triangular_number
+  end
+
+  # 等差数列の合計を求める
+  def self.sum_arithmetic_progression(number)
+    sum = (number + 1) * number / 2
   end
 end
 
