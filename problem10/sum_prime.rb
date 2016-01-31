@@ -2,14 +2,14 @@ require 'prime'
 
 module SumPrime
   def self.start
-    primes = get_primes 2000000
-    result = sum_arr primes
+    primes = get_primes(2000000)
+    result = sum_arr(primes)
     puts result
   end
 
-  def self.get_primes to
-    primes = []
-    1.upto to do |n|
+  def self.get_primes(to)
+    primes = [2]
+    3.step(to, 2) do |n|
       if n.prime?
         primes << n
       end
