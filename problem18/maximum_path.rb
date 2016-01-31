@@ -19,8 +19,6 @@ EOT
 
   def self.start
     lines = []
-    last_index = 0
-    sum_path = 0
     TRIANGLE.each_line do |line|
       lines << line.gsub("\n", '').split.map(&:to_i)
     end
