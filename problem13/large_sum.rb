@@ -100,21 +100,23 @@ module LargeSum
 72107838435069186155435662884062257473692284509516
 20849603980134001723930671666823555245252804609722
 53503534226472524250874054075591789781264330331690
-EOT
+  EOT
   SERIES.freeze
 
   def self.start
-    num_arr = SERIES.split.map(&:to_i)
-    sum = 0
-    num_arr.each do |n|
-      sum += n
-    end
-    result = get_ten_digit_from_top sum
-    puts result
+    puts get_ten_digit_from_top(sum_arr(SERIES.split.map(&:to_i)))
   end
 
-  def self.get_ten_digit_from_top number
+  def self.get_ten_digit_from_top(number)
     number.to_s[0, 10]
+  end
+
+  def self.sum_arr(arr)
+    sum = 0
+    arr.each do |n|
+      sum += n
+    end
+    sum
   end
 end
 
