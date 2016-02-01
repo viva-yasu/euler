@@ -25,11 +25,7 @@ module SumPrime
   end
 
   def self.sum_arr(arr)
-    sum = 0
-    arr.each do |i|
-      sum += i
-    end
-    sum
+    arr.inject(:+)
   end
 end
 
