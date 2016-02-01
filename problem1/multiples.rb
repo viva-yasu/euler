@@ -7,15 +7,15 @@ Problem 1 「3と5の倍数」
 =end
 
 module Multiples
-  def self.multiples_3_or_5 i
+  def self.multiples_3_or_5(i)
     num = 1
-    sum = 0
+    multiples = []
     while num < i
-      sum += num if num.modulo(3).zero? || num.modulo(5).zero?
+      multiples << num if num.modulo(3).zero? || num.modulo(5).zero?
       num += 1
     end
-    puts sum
+    puts multiples.inject(:+)
   end
 end
 
-Multiples.multiples_3_or_5 1000
+Multiples.multiples_3_or_5(1000)
