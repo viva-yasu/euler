@@ -38,9 +38,6 @@ module Amicable
     end
     sum
   end
-  def self.ex n
-    p sum_divisors(get_divisors(n))
-  end
 end
 
 Amicable.start
