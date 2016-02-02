@@ -13,11 +13,7 @@ module PowerDigit
   end
 
   def self.sum_arr(arr)
-    sum = 0
-    arr.each do |n|
-      sum += n
-    end
-    sum
+    sum = arr.inject(:+)
   end
 end
 
