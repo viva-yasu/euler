@@ -5,27 +5,12 @@ Problem 5 「最小の倍数」
 
 では, 1 から 20 までの整数全てで割り切れる数字の中で最小の正の数はいくらになるか.
 =end
+require 'rational'
 
 module SmallestMultiple
   def self.start
-    target_number = 20
-    done_flg = false
-    loop do
-      20.downto(1) do |n|
-        result = target_number % n
-        if result != 0
-          break
-        end
-        if n == 1
-          puts target_number
-          done_flg = true
-          break
-        end
-      end
-      break if done_flg
-      target_number += 1
-    end
-
+    num = (1..20).inject(1) { |result, n| result.lcm(n) }
+    puts num
   end
 end
 
