@@ -11,7 +11,12 @@ module LatticePaths
   end
 
   def self.combination(n, r)
-    factorial(n) / (factorial(r) * factorial(n - r))
+    p = 1
+    r.times do
+      p *= n
+      n -= 1
+    end
+    p / factorial(r)
   end
 
   def self.factorial(i)
