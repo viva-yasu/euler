@@ -1,3 +1,10 @@
+=begin
+Problem 48 「自身のべき乗(self powers)」
+次の式は, 11 + 22 + 33 + ... + 1010 = 10405071317 である.
+
+では, 11 + 22 + 33 + ... + 10001000 の最後の10桁を求めよ.
+=end
+
 module 	SelfPowers
   def self.start(n)
     powers = []
